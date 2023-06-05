@@ -1,14 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchRequest } from "../../lib/fetchAPI";
+import { getMealsRequest } from "../../api/basketService";
 
 export const getFoods = createAsyncThunk(
   "meals/getMeals",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetchRequest("/foods");
-      return response
+      const response = await getMealsRequest("/foods");
+      return response.data.data;
     } catch (error) {
-      return rejectWithValue(error?.response?.message|| "Something went wrong")
+      return rejectWithValue(
+        error?.response?.message || "Something went wrong"
+      );
     }
   }
 );

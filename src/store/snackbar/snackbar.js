@@ -22,6 +22,7 @@ export const snackbarSlice = createSlice({
     },
     closeSnackbar(state) {
       state.open = false;
+      
     },
   },
 });
